@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+
+  @@map("users")
+}
+
+model DataResponse {
+  id           String        @id @default(uuid())
+  goal         Int
+  accomplished Int
+  data         Data[]
+  colorScheme  ColorScheme[]
+
+  @@map("goals")
+}
+
+model Data {
+  id             Int          @id @default(autoincrement())
+  name           String
+  value          Int
+  dataResponse   DataResponse @relation(fields: [dataResponseId], references: [id])
+  dataResponseId String
+}
+
+model ColorScheme {
+  id             Int          @id @default(autoincrement())
+  name           String
+  value          String
+  dataResponse   DataResponse @relation(fields: [dataResponseId], references: [id])
+  dataResponseId String
+}

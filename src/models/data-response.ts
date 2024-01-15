@@ -1,7 +1,7 @@
 export class DataResponse {
-    meta: number;
-    diasRealizados: number;
-    dados: {
+  goal: number;
+  accomplished: number;
+    data: {
       name: string;
       value: number;
     }[];
