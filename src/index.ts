@@ -2,9 +2,7 @@ import express, { Request, Response, response } from 'express';
 import { DataResponse } from './models/data-response';
 import cors from 'cors';
 import routes from './routes';
-import * as dotenv from 'dotenv';
 
-dotenv.config();
 
 const app = express();
 const port = 3000;
