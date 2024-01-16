@@ -22,12 +22,6 @@
         "runtime": "@vercel/node",
         "maxDuration": 30
       }
-    },
-    "hooks": {
-      "build": {
-        "function": "api/index.handler",
-        "command": "npm run prisma:generate"
-      }
     }
   }
   
