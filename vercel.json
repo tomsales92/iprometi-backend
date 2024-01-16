@@ -1,15 +1,33 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "src/index.ts",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "src/index.ts",
+        "use": "@vercel/node",
+        "config": {
+          "maxLambdaSize": "2048mb",
+          "NODE_ENV": "production"
+        },
+        "functions": [
+          {
+            "includeFiles": "src/**/*.ts",
+            "function": "api/index.handler"
+          }
+        ]
+      }
     ],
-    "routes": [
-        {
-            "src": "(.*)",
-            "dest": "src/index.ts"
-        }
-    ]
-}
+    "functions": {
+      "api/index.ts": {
+        "includeFiles": "src/**/*.ts",
+        "runtime": "@vercel/node",
+        "maxDuration": 30
+      }
+    },
+    "hooks": {
+      "build": {
+        "function": "api/index.handler",
+        "command": "npm run prisma:generate"
+      }
+    }
+  }
+  
