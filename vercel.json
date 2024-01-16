@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "src/index.ts",
+        "src": "src/server.ts",
         "use": "@vercel/node",
         "config": {
           "maxLambdaSize": "2048mb",
@@ -15,13 +15,6 @@
           }
         ]
       }
-    ],
-    "functions": {
-      "api/index.ts": {
-        "includeFiles": "src/**/*.ts",
-        "runtime": "@vercel/node",
-        "maxDuration": 30
-      }
-    }
+    ]
   }
   
