@@ -8,7 +8,7 @@
           "maxLambdaSize": "2048mb",
           "NODE_ENV": "production"
         },
-        "functions": [
+        "routes": [
           {
             "includeFiles": "src/**/*.ts",
             "function": "api/index.handler"
